@@ -1,0 +1,8 @@
+# Steps to setup cudnn
+apt install libcudnn8-dev
+cp /usr/include/cudnn_version.h /usr/local/cuda/include
+cp /usr/include/cudnn.h /usr/local/cuda/include/
+
+export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/libtorch/
+
+colcon build --symlink-install

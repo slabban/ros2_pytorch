@@ -1,0 +1,64 @@
+    1  ls
+    2  cd libtorch/
+    3  ls
+    4  cd ..
+    5  export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/libtorch/
+    6  cd /home/ros2_ws/
+    7  colcon build
+    8  cd /libtorch/
+    9  ls
+   10  cd share/cmake/which nvcc
+   11  which nvcc
+   12  cd /usr/local/cuda
+   13  ls
+   14  cd include
+   15  ls
+   16  ls cud*
+   17  nvcc --version
+   18  sudo apt install libcudnn8
+   19  apt-get update
+   20  sudo apt install libcudnn8
+   21  cd /home/ros2_ws/
+   22  colcon build
+   23  cd /usr/local/
+   24  ls
+   25  which cudnn
+   26  cd cuda
+   27  ls
+   28  cd ..
+   29  cd cuda-11.3/
+   30  ls
+   31  /sbin/ldconfig -N -v $(sed ‘s/:/ /’ <<< $LD_LIBRARY_PATH) 2>/dev/null | grep libcudnn
+   32  $ /sbin/ldconfig -N -v $(sed ‘s/:/ /’ <<< $LD_LIBRARY_PATH) 2>/dev/null | grep libcudnn
+   33  cd include
+   34  ls cudnn*
+   35  cd ..
+   36  cd cuda/include
+   37  ls cudnn*
+   38  find cuddn*
+   39  cd /
+   40  find cuddn*
+   41  find .  cuddn*
+   42  cd /home/ros2_ws/
+   43  colcon build
+   44  export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/libtorch/
+   45  colcon build
+   46  locat cudnn.h
+   47  locate cudnn.h
+   48  apt install libcudnn8-dev
+   49  cd /usr/include/
+   50  cp cudnn.h /usr/local/cuda/include/
+   51  cp lib64/libcudnn* /usr/local/cuda/lib64
+   52  cd /home/ros2_ws/
+   53  colcoon build
+   54  colcon build
+   55  cd /usr/include/
+   56  ls
+   57  cd /usr/include/
+   58  ls
+   59  ls cud*
+   60  cp cudnn_version.h /usr/local/cuda/include
+   61  cd /home/ros2_ws/
+   62  colcon build
+   63  history
+   64  history >> /home/ros2_ws/src/ros2_pytorch/cuda_steps.txt
