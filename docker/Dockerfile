@@ -3,6 +3,7 @@ FROM nvidia/cuda:11.3.1-devel-ubuntu20.04
 # disable terminal interaction for apt
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Install cudnn8 and move necessary header files to cude include directory
 RUN apt-get update && apt install libcudnn8-dev -y && \
 	cp /usr/include/cudnn_version.h /usr/local/cuda/include && \
 	cp /usr/include/cudnn.h /usr/local/cuda/include/ && \
@@ -26,8 +27,13 @@ RUN apt-get update && apt-get install -y \
         vim \
         unzip \
         mlocate \
-	    libgoogle-glog-dev \
+	libgoogle-glog-dev \
         && rm -rf /var/lib/apt/lists/*
+
+# Install libtorch
+RUN wget https://download.pytorch.org/libtorch/cu113/libtorch-cxx11-abi-shared-with-deps-1.11.0%2Bcu113.zip && \
+        unzip libtorch-cxx11-abi-shared-with-deps-1.11.0+cu113.zip && \
+        rm -rf libtorch-cxx11-abi-shared-with-deps-1.11.0+cu113.zip 
 
 # Python basics
 RUN apt-get update && apt-get install -y \
@@ -78,14 +84,13 @@ RUN apt-get update && apt-get install -y \
         ros-foxy-desktop \
         ros-foxy-launch-testing-ament-cmake \
         ros-foxy-rqt* \
-        ros-foxy-turtlesim \
         ros-foxy-v4l2-camera \
-        ros-foxy-realsense2-camera \
         ros-foxy-vision-msgs \
         ros-foxy-pcl-conversions \
         ros-foxy-sensor-msgs-py \
         ros-foxy-stereo-image-proc \
         ros-foxy-pcl-ros \
+        ros-foxy-usb-cam \
         && rm -rf /var/lib/apt/lists/*
         
 RUN apt-get update && apt-get install -y \
@@ -98,7 +103,7 @@ RUN rosdep update
 
 RUN mkdir -p /home/ros2_ws/src
 
-ADD ./libtorch /libtorch
+#ADD ./dependencies/libtorch /libtorch
 
 COPY ./entrypoint.sh /
 

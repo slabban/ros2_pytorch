@@ -1,4 +1,1 @@
-bin
-build
-install
-log
+docker/dependencies/libtorch
