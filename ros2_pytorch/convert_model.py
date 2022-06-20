@@ -1,6 +1,7 @@
 import torch
 import torchvision
 
+
 # An instance of your model.
 model = torchvision.models.resnet18()
 

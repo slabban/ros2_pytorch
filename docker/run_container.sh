@@ -28,12 +28,14 @@ echo "Running docker..."
 
 docker run \
     -it --rm \
+    --privileged \
     --env="DISPLAY=$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --env="XAUTHORITY=$XAUTH" \
     --volume="$XAUTH:$XAUTH" \
-    --name="ros2_torch_container" \
     --volume="$PWD/../ros2_pytorch:/home/ros2_ws/src/ros2_pytorch/:rw" \
+    --volume="/dev:/dev:rw" \
+    --name="ros2_torch_container" \
     --runtime=nvidia \
     ros2_torch:latest
