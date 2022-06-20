@@ -40,6 +40,11 @@ function(custom_executable target)
     DESTINATION lib/${PROJECT_NAME})
 endfunction()
 
+
+install(DIRECTORY
+launch
+DESTINATION share/${PROJECT_NAME}/)
+
 custom_executable(ros2_pytorch)
 
 target_link_libraries(ros2_pytorch "${TORCH_LIBRARIES}")

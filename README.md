@@ -60,6 +60,5 @@ ros2 run ros2_pytorch ros2_pytorch
 
 
 ## TODO
-1. Test the existing example with a usb camera input
-2. replace tracing with a the annotation to capture control flow of more complex ML models
-3. Add launchfile to the node
+1. replace tracing with a the annotation to capture control flow of more complex ML models
+
