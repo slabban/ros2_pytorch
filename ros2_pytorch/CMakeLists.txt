@@ -26,7 +26,8 @@ include_directories(include ${cv_bridge_INCLUDE_DIRS})
 
 
 function(custom_executable target)
-    add_executable(${target} src/${target}.cpp)
+    add_executable(${target} src/${target}.cpp
+    src/${PROJECT_NAME}_node.cpp)
     ament_target_dependencies(${target}
     "example_interfaces"
     "rclcpp"
