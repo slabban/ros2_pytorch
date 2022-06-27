@@ -12,10 +12,13 @@
 #include "rcpputils/asserts.hpp"
 #include "std_msgs/msg/string.hpp"
 #include "sensor_msgs/msg/image.hpp"
-
-#include <opencv2/core/core.hpp>
-#include "opencv2/highgui/highgui.hpp"
+#include "opencv4/opencv2/opencv.hpp"
 #include "cv_bridge/cv_bridge.h"
+
+#include "opencv2/highgui/highgui.hpp"
+#include <opencv2/core/core.hpp>
+
+
 
 class PyTorchNode : public rclcpp::Node
 {
@@ -31,6 +34,5 @@ private:
     torch::jit::script::Module module_;
     c10::DeviceType device = at::kCPU;
     
-    cv_bridge::CvImage img_bridge;
 
 };

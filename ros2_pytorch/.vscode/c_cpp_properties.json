@@ -4,8 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/opt/ros/foxy/include",
-                "/libtorch/include"
+                "/opt/ros/foxy/include/**",
+                "/libtorch/include",
+                "/usr/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
