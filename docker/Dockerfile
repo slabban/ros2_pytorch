@@ -3,7 +3,7 @@ FROM nvidia/cuda:11.3.1-devel-ubuntu20.04
 # disable terminal interaction for apt
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install cudnn8 and move necessary header files to cude include directory
+# Install cudnn8 and move necessary header files to cuda include directory
 RUN apt-get update && apt install libcudnn8-dev -y && \
 	cp /usr/include/cudnn_version.h /usr/local/cuda/include && \
 	cp /usr/include/cudnn.h /usr/local/cuda/include/ && \
@@ -102,8 +102,6 @@ RUN rosdep init
 RUN rosdep update
 
 RUN mkdir -p /home/ros2_ws/src
-
-#ADD ./dependencies/libtorch /libtorch
 
 COPY ./entrypoint.sh /
 

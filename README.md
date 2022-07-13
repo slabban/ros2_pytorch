@@ -4,9 +4,11 @@ Run a PyTorch model in C++ in ROS2. A template node to be able to adapt to whate
 
 To make life easier, I've created a docker environment that houses all the dependcies needed to run this package. For a desktop environment that decision was a no-brainer, and I would recommend that most folks go for that option. The only catch is that the current docker image is a hefty 16 Gigabytes in size due to it containing some pretty big packages and software such as ROS2 and libtorch in additon to the fact that the base cuda-ubuntu image it's built from is already ~5 Gigabytes.
 
+If you do not have a CUDA supported device then you should still be able to port the package to your own environment, be sure to set the `GPU` parameter to 0 in the launch file!
+
 ## Prerequisites
 
-This package is currently being developed on a linux desktop with the following specifications:
+This package was developed on a linux desktop with the following specifications:
 
 - Ubuntu 20.04
 - 12th Gen Intel(R) Core(TM) i7-12700K
@@ -37,7 +39,8 @@ How you operate in the container is up to you. I use vscode since it has some pr
 
 Once you are in the container development environment:
 
-Add Libtorch to your `CMAKE_PREFIX_PATH` env variable, following the path in the docker container:
+Add Libtorch to your `CMAKE_PREFIX_PATH` env variable via the command below or preferably set the correct path in the `CMakeLists.txt` of the package, you will need to do this if you have change the Libtorch
+installation location in the Dockerfile, otherwise it has already been set correctly:
 ```
 export CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH:/libtorch
 ```
@@ -53,12 +56,9 @@ Source the setup.bash file in the workspace:
 ```
 source install/setup.bash
 ```
-Run the ros2_pytorch node:
+Launch the ros2_pytorch node:
 ```
-ros2 run ros2_pytorch ros2_pytorch
+ros2 launch ros2_pytorch ros2_pytorch.launch.py
 ```
 
-
-## TODO
-1. replace tracing with a the annotation to capture control flow of more complex ML models
 

@@ -1,4 +1,11 @@
 
+//
+//  ros2_pytorch.cpp
+//
+//  Created by Andreas Klintberg on 11/17/18.
+//  Updated, modified, and maintained by Samer Labban on 07/13/2022 
+//  Copyright © 2022 Samer Labban. All rights reserved.
+//
 
 #include "ros2_pytorch.hpp"
 

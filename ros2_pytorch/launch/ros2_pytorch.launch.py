@@ -6,8 +6,6 @@ from launch_ros.actions import Node
 def generate_launch_description():
     ld = LaunchDescription()
 
-    # The node constructor will accept the typical variables that we used to 
-    # pass into the ros1:
     # package: package name
     # executable: name of executable file
     # name: arbitrary name give to node
